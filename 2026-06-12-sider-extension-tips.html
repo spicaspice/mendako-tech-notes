@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sider拡張機能の便利な使い方</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef6fb;
+      --panel: rgba(250, 253, 255, 0.94);
+      --line: #bfd9ea;
+      --text: #1d2b36;
+      --muted: #567082;
+      --accent: #0f6ea8;
+      --accent-soft: #e5f4ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(182, 226, 255, 0.75), transparent 28%),
+        linear-gradient(180deg, #f7fbfe 0%, var(--bg) 100%);
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 40px auto;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: 0 18px 50px rgba(58, 92, 118, 0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    h1, h2, h3 {
+      line-height: 1.35;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin-top: 34px;
+      font-size: 1.4rem;
+    }
+
+    h3 {
+      margin-top: 24px;
+      font-size: 1.08rem;
+    }
+
+    p, li {
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .meta {
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .summary {
+      color: var(--muted);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 28px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        margin: 20px auto;
+        padding: 22px;
+        border-radius: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="meta">2026-06-12</div>
+    <h1>Sider拡張機能の便利な使い方</h1>
+    <p class="summary">Sider のブラウザ拡張を前提に、要約・PDF解析・文章改善・Wisebase 保存をどう使うと便利かを実用寄りでまとめたメモ。</p>
+
+    <h2>概要</h2>
+    <p>Sider はブラウザのサイドバー型 AI 拡張機能です。2026年6月12日時点の公式サイトでは、ページ要約、PDF解析、画像対応チャット、検索補助、Wisebase への保存などが主な機能として案内されています。便利に使うコツは、「調べる」「読む」「書く」「ためる」を分けて使うことです。</p>
+
+    <h2>詳細説明</h2>
+
+    <h3>1. いちばん便利なのは「開きっぱなし運用」</h3>
+    <p>Sider は別タブに飛ぶより、サイドバーを常駐させて必要な時だけ開く運用が強いです。</p>
+    <ul>
+      <li>調べもの中にその場で質問する</li>
+      <li>長いページを開いたまま要約だけ取る</li>
+      <li>書いている途中の文をその場で直す</li>
+    </ul>
+    <p>別タブ型のAIより、作業の文脈を切らしにくいのが良いところです。</p>
+
+    <h3>2. ページ要約は「読む前」と「読んだ後」で使い分ける</h3>
+    <ul>
+      <li>読む前: 3行で要点を出させて、読む価値があるか判断する</li>
+      <li>読んだ後: 重要ポイントを箇条書きで出させて理解を固定する</li>
+    </ul>
+    <p>長文記事や海外ドキュメントで特に効きます。</p>
+
+    <h3>3. PDF・画像・ファイル対応はかなり便利</h3>
+    <ul>
+      <li>PDF の要点だけ抜く</li>
+      <li>仕様書を読ませて質問する</li>
+      <li>画像を見せて内容確認する</li>
+      <li>OCR 的に文字を拾わせる</li>
+    </ul>
+    <p>読むのが重い資料を雑に一次処理させるのに向いています。</p>
+
+    <h3>4. 文章改善は「ゼロから書かせる」より「下書きを直させる」</h3>
+    <ul>
+      <li>メールを丁寧にする</li>
+      <li>Slack 文を短くする</li>
+      <li>英文を自然にする</li>
+      <li>箇条書きを説明文にする</li>
+    </ul>
+    <p>丸投げより、自分の下書きを整えさせる方が意図を保ちやすいです。</p>
+
+    <h3>5. 選択テキストからのクイック操作が地味に強い</h3>
+    <ul>
+      <li>わからない単語だけ説明させる</li>
+      <li>英文メールの一段落だけ直す</li>
+      <li>エラー文だけ翻訳する</li>
+      <li>長い一文を平易に言い換える</li>
+    </ul>
+    <p>必要な場所だけ AI に渡す方が速くて安定しやすいです。</p>
+
+    <h3>6. Wisebase は「あとで使うものだけ」保存する</h3>
+    <ul>
+      <li>再利用しそうな要約だけ保存する</li>
+      <li>調査メモはテーマごとにまとめる</li>
+      <li>一回見ただけのページは保存しない</li>
+    </ul>
+    <p>材料をためて再利用する使い方で価値が出やすいです。</p>
+
+    <h3>7. 検索補助は「たたき台」として使う</h3>
+    <p>検索結果の置き換えとして盲信するより、全体像の把握や比較候補出しに使う方が安全です。一次情報の確認は別で必要です。</p>
+
+    <h3>8. 2025年の更新では音声文字起こし系も強化</h3>
+    <p>公式の <code>What's New</code> では、2025年5月26日に Browser Extension の更新として、音声ファイルの文字起こしと話者識別が案内されています。最近は「読む・書く」だけではなく、会議音声の整理にも広がっています。</p>
+
+    <h2>参照URL</h2>
+    <ul>
+      <li><a href="https://sider.ai/">https://sider.ai/</a></li>
+      <li><a href="https://sider.ai/extensions">https://sider.ai/extensions</a></li>
+      <li><a href="https://sider.ai/help-center/getting-started/what-is-sider">https://sider.ai/help-center/getting-started/what-is-sider</a></li>
+      <li><a href="https://sider.ai/whats-new/browser-extension">https://sider.ai/whats-new/browser-extension</a></li>
+    </ul>
+
+    <a class="back" href="./index.html">← 記事一覧へ</a>
+  </main>
+</body>
+</html>
