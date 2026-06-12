@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cider拡張機能の便利な使い方</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5efe6;
+      --panel: rgba(255, 251, 245, 0.92);
+      --line: #dbc8af;
+      --text: #2b241d;
+      --muted: #6d6256;
+      --accent: #9a3412;
+      --accent-soft: #fff1e6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 214, 170, 0.82), transparent 30%),
+        linear-gradient(180deg, #fcf8f2 0%, var(--bg) 100%);
+    }
+
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 40px auto;
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: 0 18px 50px rgba(98, 72, 35, 0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    h1, h2, h3 {
+      line-height: 1.35;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin-top: 34px;
+      font-size: 1.4rem;
+    }
+
+    h3 {
+      margin-top: 24px;
+      font-size: 1.08rem;
+    }
+
+    p, li {
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .meta {
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .summary {
+      color: var(--muted);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 28px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        margin: 20px auto;
+        padding: 22px;
+        border-radius: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="meta">2026-06-12</div>
+    <h1>Cider拡張機能の便利な使い方</h1>
+    <p class="summary">Apple Music クライアントの Cider を前提に、拡張機能・テーマ・スニペット・RPC をどう使うと便利かを実用寄りで整理したメモ。</p>
+
+    <h2>概要</h2>
+    <p>Cider は Apple Music 向けのデスクトップクライアントで、2025年9月26日時点の公式サイトでは拡張性の高いカスタマイズやコミュニティ製プラグインが強みとして紹介されています。便利に使うなら、まずは Marketplace の <code>Plugins</code> <code>Themes</code> <code>Snippets</code> を分けて考えるとわかりやすいです。</p>
+
+    <h2>詳細説明</h2>
+
+    <h3>1. まず覚えると楽な3分類</h3>
+    <p>Cider の Marketplace には次の3系統があります。</p>
+    <ul>
+      <li>Plugins: 連携機能や再生操作、表示の拡張を足す</li>
+      <li>Themes: 見た目全体を変える</li>
+      <li>Snippets: CSS っぽい軽い調整を重ねて雰囲気を整える</li>
+    </ul>
+    <p>いきなり全部盛りにするより、最初は <code>Theme 1つ</code> と <code>Snippet 少し</code> くらいから始めるのが扱いやすいです。</p>
+
+    <h3>2. いちばん実用的なのは「見た目の固定化」</h3>
+    <p>Cider は UI をかなりいじれるので、毎日使うなら次の方向が便利です。</p>
+    <ul>
+      <li>作業用: 情報量多めのレイアウトにする</li>
+      <li>集中用: ノイズ少なめのテーマにする</li>
+      <li>リビング再生用: ジャケットやビジュアルが映えるテーマにする</li>
+    </ul>
+    <p>好みの雰囲気を1回作っておくと、標準アプリより「自分の再生環境」に寄せやすいです。</p>
+
+    <h3>3. Plugins は「外部連携」と「再生操作」で選ぶ</h3>
+    <p>便利さを感じやすいのは次のあたりです。</p>
+    <ul>
+      <li>Discord連携: 何を聴いているかを自然に見せたいとき</li>
+      <li>Last.fm連携: 再生記録を残したいとき</li>
+      <li>再生操作系プラグイン: キュー操作や表示切り替えを増やしたいとき</li>
+      <li>Visualizer系: 音楽を流しっぱなしにするときの演出強化</li>
+    </ul>
+    <p>「見た目系」と「操作系」を1つずつ入れて、足りないものだけ増やすのが無難です。</p>
+
+    <h3>4. Snippets は小さな不満つぶしに向いている</h3>
+    <ul>
+      <li>フォントサイズを少し変えたい</li>
+      <li>余白だけ詰めたい</li>
+      <li>色味を少しだけ落ち着かせたい</li>
+      <li>一部パネルだけ強調したい</li>
+    </ul>
+    <p>こういう用途では Snippets が便利です。Themes より軽く試せて、複数を重ねやすいのが良いところです。</p>
+
+    <h3>5. かなり便利なのが RPC 機能</h3>
+    <p>公式ドキュメントでは、Cider はローカルの RPC/API を公開できます。<code>http://localhost:10767</code> で再生状態取得や再生指示ができ、トークン認証も設定できます。</p>
+    <ul>
+      <li>Stream Deck や自作ランチャーから再生・一時停止する</li>
+      <li>ホームオートメーションやショートカットから曲送りする</li>
+      <li>今流れている曲を別アプリに表示する</li>
+      <li>デスクトップ表示や配信用オーバーレイに再生情報を渡す</li>
+    </ul>
+    <p>単なる音楽アプリではなく、ちょっとした自動化ハブとして使えるのが Cider の面白いところです。</p>
+
+    <h3>6. バージョン差分は気にしたほうがいい</h3>
+    <p>公式 Changelog では、2025年7月27日に <code>2.5.0</code> で Plugin support / ThemeKit / Marketplace 導入、2025年9月26日に <code>3.1.0</code> が公開されています。古い紹介記事とは画面や導線が少し違う可能性があります。</p>
+    <ul>
+      <li>まず現行版で Marketplace が見えるか確認する</li>
+      <li>古いブログ記事の手順は鵜呑みにしない</li>
+      <li>うまく動かないときは Changelog と Docs を先に見る</li>
+    </ul>
+
+    <h2>参照URL</h2>
+    <ul>
+      <li><a href="https://cider.sh/">https://cider.sh/</a></li>
+      <li><a href="https://marketplace.cider.sh/">https://marketplace.cider.sh/</a></li>
+      <li><a href="https://cider.sh/docs/client/rpc">https://cider.sh/docs/client/rpc</a></li>
+      <li><a href="https://cider.sh/changelogs">https://cider.sh/changelogs</a></li>
+    </ul>
+
+    <a class="back" href="./index.html">← 記事一覧へ</a>
+  </main>
+</body>
+</html>
